@@ -6,7 +6,7 @@
 @model Collection<ApiDescription>
 
 @{
-    ViewBag.Title = "Film Lists";
+    ViewBag.Title = "API LISTS";
 
     // Group APIs by controller
     ILookup<HttpControllerDescriptor, ApiDescription> apiGroups = Model.ToLookup(api => api.ActionDescriptor.ControllerDescriptor);
@@ -26,7 +26,7 @@
 <div id="body" class="help-page">
     <video autoplay muted loop id="background-video">
         <source src="~/Areas/HelpPage/r.mp4" type="video/mp4">
-        
+
     </video>
 
     <section class="featured">
@@ -34,16 +34,30 @@
 
             <br>
             <br>
-            <br>
-            <br>
-            <br>
-            <br>
+            <h2>Introduction</h2>
+            <p>
+                Provide a general description of your APIs here.
+            </p>
+
+
 
         </div>
     </section>
 
 
     <section class="content-wrapper main-content clear-fix">
+        @foreach (var group in apiGroups)
+        {
+            @Html.DisplayFor(m => group, "ApiGroup")
+        }
 
     </section>
+    
+   
+
+
+
+
+
+
 </div>
